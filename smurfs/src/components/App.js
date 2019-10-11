@@ -3,6 +3,9 @@ import {connect} from 'react-redux';
 import {getSmurfs} from '../actions';
 import SmurfList from './SmurfList';
 import "./App.css";
+import styled from 'styled-components';
+
+
 
 
 const App = (props) => {
