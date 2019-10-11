@@ -23,7 +23,14 @@ export const POST_FAIL = 'POST_FAIL';
 
 export const getSmurfs = () => dispatch => {
     console.log(dispatch);
+    dispatch({type:START_GET});
 
+    axios.get(`http://localhost:3333/smurfs`)
+    .then(response => {
+        console.log(response);
+        dispatch({type:GET_SUCCESS, payload: response.data});
+    })
+    .catch(error => dispatch({type:GET_FAIL, payload: error}));
 };
 
 
