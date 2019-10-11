@@ -43,8 +43,25 @@ export const mainReducer = (state=initialState, action) => {
         case GET_FAIL:
             return{
                 ...state,
+                isFetching: false,
                 getError: action.payload
-            }
+            };
+        case START_POST:
+            return{
+                ...state,
+                isPosting: true
+            };
+        case POST_SUCCESS:
+            return{
+                ...state,
+                isPosting:false
+            };
+         case POST_FAIL:
+             return {
+                 ...state,
+                 isPosting: false,
+                 postError: action.payload
+             }   
         default:
             return state;
     }

@@ -4,7 +4,7 @@ import SmurfForm from './SmurfForm';
 import SmurfCard from './SmurfCard';
 
 const SmurfList = (props) => {
-    console.log(props);
+    // console.log(props);
     return (
         <div>
             <div><SmurfForm /></div>
@@ -16,7 +16,7 @@ const SmurfList = (props) => {
 }
 
 const mapStateToProps = state => {
-    console.log(state);
+    // console.log(state);
     return{
         smurfs: state.main.smurfs
     };

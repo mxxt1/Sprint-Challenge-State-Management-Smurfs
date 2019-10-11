@@ -22,12 +22,11 @@ export const POST_FAIL = 'POST_FAIL';
 //action creators
 
 export const getSmurfs = () => dispatch => {
-    console.log(dispatch);
     dispatch({type:START_GET});
 
     axios.get(`http://localhost:3333/smurfs`)
     .then(response => {
-        console.log(response);
+        console.log(`get was successful`);
         dispatch({type:GET_SUCCESS, payload: response.data});
     })
     .catch(error => dispatch({type:GET_FAIL, payload: error}));
@@ -35,7 +34,19 @@ export const getSmurfs = () => dispatch => {
 
 
 
-export const postSmurfs = () => dispatch => {
-    console.log(dispatch);
-
+export const postSmurfs = (name, age, height) => dispatch => {
+    dispatch({type:START_POST});
+    const newSmurf = {'name':name, 'age':age, 'height': height};
+    console.log(newSmurf);
+    axios.post(`http://localhost:3333/smurfs`, newSmurf)
+    .then(res => {
+        console.log(`post was successful`)
+        console.log(res)
+        dispatch({type:POST_SUCCESS});
+    })
+    .then(getSmurfs())
+    .catch(err => {
+        console.log(err);
+        dispatch({type:POST_FAIL, err})  
+    })
 };
