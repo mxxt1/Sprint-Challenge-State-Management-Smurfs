@@ -6,7 +6,6 @@ import "./App.css";
 
 
 const App = (props) => {
-
   useEffect(() => {
     props.getSmurfs();
   },[]);
@@ -19,13 +18,13 @@ const App = (props) => {
   );
 }
 
-// const mapStateToProps = state => {
-//   console.log(state);
-//   return{
-//     state: state
-//   };
-// };
+const mapStateToProps = state => {
+  console.log(state);
+  return{
+    state: state
+  };
+};
 
 
-export default connect(null,{getSmurfs})(App)
+export default connect(mapStateToProps,{getSmurfs})(App)
 
